@@ -1,3 +1,11 @@
+<h1 style= 
+  "text-align: center;
+  padding-top: 20px;
+  font-family: 'Verdana'">
+  FIGHT!
+</h1>
+
+<!-- PLAYER 1 -->
 <h2 style=
   "float: left;
   display: block;
@@ -6,11 +14,18 @@
   font-family: 'Verdana'">
   <%= @name_1 %> takes the red corner!
 </h2>
-<h2 style=
+
+<!-- PLAYER 2 -->
+<div id="player-2" style=
   "float: right; 
   padding-right: 50px;
   display: block;
-  color: blue;
-  font-family: 'Verdana">
-  <%= @name_2 %> takes the blue corner!
-</h2>
+  font-family: Verdana">
+  <h2 style=
+    "color: blue;">
+    <%= @name_2 %> takes the blue corner!
+  </h2>
+  <h3 style=
+    "text-align: center"><%= @name_2 %> HP: 100
+  </h3>
+</div>

@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require 'shotgun'
 
 class Battle < Sinatra::Base
   enable :sessions
