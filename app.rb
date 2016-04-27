@@ -4,14 +4,14 @@ require 'shotgun'
 class Battle < Sinatra::Base
 
   get '/' do
-    erb(:index)
+    erb :index
   end
   
   post '/names' do
     p params
     @name1 = params[:name1]
     @name2 = params[:name2]
-    erb(:play)
+    erb :play 
   end
 
   get '/play' do 
