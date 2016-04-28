@@ -1,11 +1,19 @@
 <div align="center">
-<h1><%= @game.player_1.name %> attacked <%= @game.player_2.name %></h1><br><br>
 
-<h2><%= @game.player_2.name %>'s turn</h2>
+  <% if @game.current_turn == @game.player_1 %>
+    <%= @game.player_1.name %> attacked <%= @game.player_2.name %>
+  <% else %>
+    <%= @game.player_2.name %> attacked <%= @game.player_1.name %>
+  <% end %>
 
-<%= @game.player_2.name %>: <%= @game.player_2.hp %> HP<br><br>
+  <h2><%= @game.current_turn.name %>'s turn</h2>
+  
+  <br><br>
 
-<form action="/attack">
-  <input type="submit" value="Attack">
-</form>
+  <%= @game.player_1.name %>: <%= @game.player_1.hp %> HP<br><br>
+  <%= @game.player_2.name %>: <%= @game.player_2.hp %> HP<br><br>
+
+  <form action="/switch-turns" method="post">
+    <input type="submit" value="OK">
+  </form>
 </div>

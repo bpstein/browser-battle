@@ -11,9 +11,14 @@ describe Player do
   end
 
   describe '#hit_points' do
-    it 'returns the hit points' do
+    it 'returns the hit points of Grig' do
       expect(grig.hp).to eq described_class::DEFAULT_HIT_POINTS
     end
+
+    it 'returns the hit points of Bob' do
+      expect(bob.hp).to eq described_class::DEFAULT_HIT_POINTS
+    end
+
   end
 
   describe '#receive_damage' do
