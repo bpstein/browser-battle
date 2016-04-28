@@ -24,8 +24,9 @@ class Battle < Sinatra::Base
 	end
 
 	get '/attack' do
-	  @game = $game 
+	  @game = $game
 	  @game.attack(@game.player_2)
+	  @game.switch_turn
 	  erb :attack
 	end
 
@@ -33,8 +34,3 @@ class Battle < Sinatra::Base
   run! if app_file == $0
 end
 
-
- # Test-drive towards having Game.new accept two Player instances
- # Change messages being called on Player instances to ones being called on a Game instance instead
- # Replace the $player_1 and $player_2 global variables with references to a $game global variable 
-	 #that is instantiated when a game is started.
