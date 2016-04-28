@@ -23,10 +23,29 @@ attr_reader :player_1, :player_2, :current_turn, :attacked
     @current_turn = opponent_of(current_turn)
   end
 
-  def opponent_of(the_player)
-    @players.select { |player| player != the_player }.first
+  def opponent_of(player)
+    players_who_are_not(player).first
   end
 
-  private 
+  def game_over?
+    losing_players.any?
+  end
+
+  def loser
+    losing_players.first
+  end
+
+  private
+
   attr_reader :players
+
+  def players_who_are_not(the_player)
+    players.select { |player| player != the_player }
+  end
+
+  def losing_players
+    players.select { |player| player.hp <= 0 }
+  end
+
+
 end
