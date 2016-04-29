@@ -7,6 +7,10 @@ require './lib/game'
 class Battle < Sinatra::Base
 	enable :sessions
 
+	before do 
+		@game = Game.current_game
+	end
+
 	get '/' do
 	  erb :index
 	end
@@ -19,13 +23,12 @@ class Battle < Sinatra::Base
 	end
 
 	get '/play' do
-	  @game = Game.current_game
 	  erb :play
 	end
 
 	post '/attack' do
-	  Game.current_game.attack(Game.current_game.opponent_of(Game.current_game.current_turn))
-	  if Game.current_game.game_over?
+	  @game.attack(@game.opponent_of(@game.current_turn))
+	  if @game.game_over?
 	  	redirect '/game_over'
 	  else
 	  	redirect '/attack'
@@ -33,17 +36,15 @@ class Battle < Sinatra::Base
 	end
 
 	get '/attack' do
-		@game = Game.current_game
 		erb :attack
 	end
 
 	post '/switch-turns' do
-		Game.current_game.switch_turn
+		@game.switch_turn
 		redirect('/play')
 	end
 
 	get '/game_over' do
-		@game = Game.current_game
 		erb :game_over
 	end
 
