@@ -8,7 +8,7 @@ class Attack
   end
 
   def run
-    @player.damage(random_damage_amount)
+    @player.receive_damage(random_damage_amount)
   end
 
   private
